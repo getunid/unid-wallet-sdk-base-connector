@@ -1,21 +1,18 @@
-export interface HexKeyPair {
-    public : string,
-    private: string,
+import { Id, MnemonicKeyringModel } from "./model"
+
+interface Context<T> {
+    client: T,
+    encrypter(content: Buffer, secret: Buffer): Promise<Buffer>,
+    decrypter(content: Buffer, secret: Buffer): Promise<Buffer>,
 }
 
-export type Id<T> = T & { _id: string }
+export abstract class BaseConnector<T> {
+    protected context: Context<T>
 
-export interface MnemonicKeyringModel {
-    did?     : string,
-    sign     : HexKeyPair,
-    update   : HexKeyPair,
-    recovery : HexKeyPair,
-    encrypt  : HexKeyPair,
-    mnemonic?: string,
-    seed     : string,
-}
+    constructor(context: Context<T>) {
+        this.context = context
+    }
 
-export abstract class BaseConnector {
     abstract insert(payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>>
     abstract update(id: string, payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>>
     abstract findByDid(did: string): Promise<Id<MnemonicKeyringModel> | undefined>
