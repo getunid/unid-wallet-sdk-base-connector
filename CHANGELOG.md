@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/getunid/unid-wallet-sdk-base-connector/compare/v0.0.8...v0.0.9) (2021-01-28)
+
+
+### Bug Fixes
+
+* Fixed interface ([e24b294](https://github.com/getunid/unid-wallet-sdk-base-connector/commit/e24b2942def3dc9120194bf788ddee38d3b84c5f))
+
 ### [0.0.8](https://github.com/getunid/unid-wallet-sdk-base-connector/compare/v0.0.7...v0.0.8) (2021-01-28)
 
 
