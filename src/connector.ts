@@ -1,3 +1,4 @@
+import { UNiDNotImplementedError } from "./error"
 import { Id, MnemonicKeyringModel } from "./model"
 
 interface Context<T> {
@@ -14,18 +15,18 @@ export class BaseConnector<T> {
     }
 
     public insert(payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>> {
-        throw new Error()
+        throw new UNiDNotImplementedError()
     }
 
     public update(id: string, payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>> {
-        throw new Error()
+        throw new UNiDNotImplementedError()
     }
 
     public findByDid(did: string): Promise<Id<MnemonicKeyringModel> | undefined> {
-        throw new Error()
+        throw new UNiDNotImplementedError()
     }
 
     public deleteById(payload: MnemonicKeyringModel): Promise<MnemonicKeyringModel> {
-        throw new Error()
+        throw new UNiDNotImplementedError()
     }
 }
