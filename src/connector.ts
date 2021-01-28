@@ -15,7 +15,14 @@ interface InternalContext<T> {
     secret: Buffer,
 }
 
-export class BaseConnector<T> {
+export abstract class Connector {
+    abstract insert(payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>>
+    abstract update(id: string, payload: MnemonicKeyringModel): Promise<Id<MnemonicKeyringModel>>
+    abstract findByDid(did: string): Promise<Id<MnemonicKeyringModel> | undefined>
+    abstract deleteById(payload: MnemonicKeyringModel): Promise<MnemonicKeyringModel>
+}
+
+export class BaseConnector<T> implements Connector {
     protected context: InternalContext<T>
 
     constructor(context: Context<T>) {
