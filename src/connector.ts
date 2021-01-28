@@ -8,17 +8,29 @@ interface Context<T> {
     encryptionKey: string,
 }
 
+interface InternalContext<T> {
+    client: T,
+    encrypter(content: Buffer, secret: Buffer): Promise<Buffer>,
+    decrypter(content: Buffer, secret: Buffer): Promise<Buffer>,
+    secret: Buffer,
+}
+
 export class BaseConnector<T> {
-    protected context: Context<T>
+    protected context: InternalContext<T>
 
     constructor(context: Context<T>) {
-        this.context = context
-
         if (typeof(context.encryptionKey) !== 'string') {
             throw new UNiDNotCompatibleError()
         }
         if (context.encryptionKey.length !== 64) {
             throw new UNiDNotCompatibleError()
+        }
+
+        this.context = {
+            client   : context.client,
+            encrypter: context.encrypter,
+            decrypter: context.decrypter,
+            secret   : Buffer.from(context.encryptionKey, 'hex'),
         }
     }
 
