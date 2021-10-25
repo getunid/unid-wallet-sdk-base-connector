@@ -1,6 +1,6 @@
 {
   "name": "@unid/wallet-sdk-base-connector",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "libs/index.js",
   "types": "libs/index.d.ts",
   "author": "UNiD <>",
@@ -25,9 +25,7 @@
     "scripts": {}
   },
   "bin": {},
-  "publishConfig": {
-    "registry": "https://npm-registry.getunid.io"
-  },
+  "publishConfig": {},
   "dependencies": {
     "debug": "^4.3.1",
     "http-status-codes": "^2.1.4"
