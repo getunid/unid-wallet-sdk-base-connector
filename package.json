@@ -1,6 +1,6 @@
 {
-  "name": "@unid/wallet-sdk-base-connector",
-  "version": "0.0.11",
+  "name": "@getunid/wallet-sdk-base-connector",
+  "version": "0.0.12",
   "main": "libs/index.js",
   "types": "libs/index.d.ts",
   "author": "UNiD <>",
